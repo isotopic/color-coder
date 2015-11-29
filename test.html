@@ -58,34 +58,38 @@ holder.onclick = function(e){
 
 
 
-var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); 
-
-var coord = "M";
-
-var n = 13;
+var n = 10;
 var r = 120;
-
+var padding = 20;
 var fraction = (Math.PI*2) / n;
 
+var lastPoint = {x:r+padding,y:padding};
 
 for(var a=0; a<=n; a++){
 
+
+  var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); 
+
   centered_fraction = fraction*a - (Math.PI/2);
 
-  x = Math.round(Math.cos(centered_fraction)*r) + (r+20);
-  y = Math.round(Math.sin(centered_fraction)*r) + (r+20);
+  x = Math.round(Math.cos(centered_fraction)*r) + (r+padding);
+  y = Math.round(Math.sin(centered_fraction)*r) + (r+padding);
 
-  coord+= x+","+y+" ";
+  var coord = "M"+lastPoint.x+","+lastPoint.y+"  A"+r+","+r+" 0 0,1 "+x+","+y+"";
+
+  newElement.setAttribute("d",coord);
+  newElement.style.stroke = "#88ccdd";
+  newElement.style.strokeWidth = "40px";
+  newElement.style.fill = "none";
+  newElement.id = "pathX";
+  holder.appendChild(newElement);
+
+  lastPoint.x = x;
+  lastPoint.y = y;
+
 }
 
-console.log(coord);
 
-newElement.setAttribute("d",coord);
-newElement.style.stroke = "#88ccdd";
-newElement.style.strokeWidth = "40px";
-newElement.style.fill = "none";
-newElement.id = "pathX";
-holder.appendChild(newElement);
 
 
 </script>
