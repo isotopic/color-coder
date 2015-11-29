@@ -1,0 +1,130 @@
+html, body {
+    height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color:#333;
+  color:#fff;
+  font-family: "Dosis";
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+div{
+  /*border:1px dashed #ccc;*/
+  box-sizing: border-box !important;
+}
+
+
+
+#logo{
+  position:absolute;
+  text-align: center;
+  width:100%;
+  top:10px;
+}
+#logo svg{
+
+}
+
+
+
+.circle-bt{
+  display:block;
+  border:1px solid #888;
+  width:100px;
+  height:100px;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  padding-top: 33px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin:0 auto;
+  cursor:default;
+}
+
+
+#circle_svg{
+  margin:0 auto;
+}
+
+.info-box{
+  font-weight: 300;
+  font-size:24px;
+  text-align: center;
+  color:#999;
+  width:70px;
+  line-height: 40px;
+}
+.info-box span{
+  color:#eee;
+  font-weight: 500;
+  font-size:60px;
+}
+
+
+#level{
+  position: absolute;
+  left:10px;
+  bottom: 10px;
+}
+
+#record{
+  position: absolute;
+  right:10px;
+  bottom: 10px;
+}
+
+
+
+#circle_svg{
+  margin:0 auto;
+}
+
+
+
+
+#logo_isotopic{
+  position:absolute;
+  text-align: center;
+  width:100%;
+  bottom:10px;
+}
+#logo_isotopic svg{
+
+}
+
+
+
+
+
+
+
+
+
+.box{
+  display:table;
+  width:100%;
+  height:100%;
+  text-align: center;
+}
+
+
+.box-wrap{
+  display:table-cell;
+  vertical-align: middle;
+}
+
+
+
+
+
