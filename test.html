@@ -50,22 +50,20 @@
 <script type="text/javascript">
 
 
+
 var holder = document.getElementById('holder');
 
-holder.onclick = function(e){
-  console.log(e.target.id);
-}
 
-
-
-var n = 10;
-var r = 120;
-var padding = 20;
+var n = 3;
+var r = 125;
+var padding = 25;
 var fraction = (Math.PI*2) / n;
+var lastPoint = {x:r+padding, y:padding};
 
-var lastPoint = {x:r+padding,y:padding};
 
-for(var a=0; a<=n; a++){
+
+
+for(var a=1; a<=n; a++){
 
 
   var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); 
@@ -77,16 +75,29 @@ for(var a=0; a<=n; a++){
 
   var coord = "M"+lastPoint.x+","+lastPoint.y+"  A"+r+","+r+" 0 0,1 "+x+","+y+"";
 
-  newElement.setAttribute("d",coord);
-  newElement.style.stroke = "#88ccdd";
-  newElement.style.strokeWidth = "40px";
-  newElement.style.fill = "none";
-  newElement.id = "pathX";
-  holder.appendChild(newElement);
 
+  newElement.setAttributeNS(null,"d",coord);
+
+  var red = Math.round(Math.random()*255);
+  var green = Math.round(Math.random()*255);
+  var blue = Math.round(Math.random()*255);
+
+  newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
+  newElement.style.strokeWidth = "50px";
+  newElement.style.fill = "none";
+  newElement.id = "path"+a;
+
+  holder.appendChild(newElement);
   lastPoint.x = x;
   lastPoint.y = y;
 
+}
+
+
+
+
+holder.onclick = function(e){
+  console.log(e.target.id);
 }
 
 
