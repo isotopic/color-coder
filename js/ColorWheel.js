@@ -1,5 +1,7 @@
 /**
-* All things related to the circle, including generating random colors
+* ColorWheel
+* 
+* This one takes care of the fancy colored circle from the gameplay.
 */
 
 var ColorWheel = (function() {

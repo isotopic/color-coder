@@ -1,5 +1,7 @@
 /**
-* All things related to going from one screen to another.
+* ScreenManager
+*
+* This one takes care of transitions between the screens of the game.
 */
 
 var ScreenManager = (function() {
