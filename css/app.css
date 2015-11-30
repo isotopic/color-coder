@@ -30,8 +30,11 @@ div{
   width:100%;
   top:10px;
 }
-#logo svg{
 
+ @media all and (max-width: 500px) {
+    #logo_svg{
+        width:190px !important;
+    }
 }
 
 
@@ -55,7 +58,22 @@ div{
 
 #circle_svg{
   margin:0 auto;
+  width:500px;
+  height:500px; 
 }
+
+
+/*
+ @media all and (max-width: 500px) {
+    #circle_svg {
+        width: 300px;
+        height: 300px;
+    }
+    #circle_svg #color_label {
+        padding-top:5px;
+    }
+}
+*/
 
 .info-box{
   font-weight: 300;
@@ -64,6 +82,7 @@ div{
   color:#999;
   width:70px;
   line-height: 40px;
+  cursor:default;
 }
 .info-box span{
   color:#eee;
@@ -112,6 +131,7 @@ div{
 
 
 .box{
+  position: absolute;
   display:table;
   width:100%;
   height:100%;

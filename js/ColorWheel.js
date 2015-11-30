@@ -1,21 +1,48 @@
 /**
-* All color calculations including generating the circle
+* All things related to the circle, including generating random colors
 */
 
 var ColorWheel = (function() {
 
 
+
+
+
   function generateCircle(svg, n){
 
-    var circle = document.getElementById(svg);
     var n = n||2;
+
+    var circle = document.getElementById(svg);
+
+    if(window.innerWidth<500){
+      circle.style.width="300px";
+      circle.style.height="300px";
+    }else{
+      circle.style.width="600px";
+      circle.style.height="600px";
+    }
+  
     var svg_width = circle.getBoundingClientRect().width;
-    var strokeWidth = 100;
-    var padding = Math.ceil(strokeWidth/2)+2;
+    var strokeWidth = (svg_width >= 500 ? 90 : 60);
+    var padding = Math.ceil(strokeWidth/2)+10;
     var r = (svg_width/2 - padding);
     var radian = ( Math.PI*2) / n;
 
+      //White circle below the others
+      var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
+      newElement.setAttributeNS(null,"cx","50%");
+      newElement.setAttributeNS(null,"cy","50%");
+      newElement.setAttributeNS(null,"r",r);
+      newElement.setAttributeNS(null, "stroke", 'rgb(255,255,255)');
+      whitestrokeWidth = strokeWidth+4;
+      newElement.style.strokeWidth = whitestrokeWidth+"px";
+      newElement.style.fill = "none";
+      newElement.id = "path_base";
+      circle.appendChild(newElement);
+
+    //Each one of the arcs
     for(var a=0; a<n; a++){
+
       var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); 
       arc0 = radian*a - Math.PI/2;
       arc1 = radian*(a+1) - Math.PI/2 - (Math.PI/400);
@@ -35,18 +62,17 @@ var ColorWheel = (function() {
       circle.appendChild(newElement);
 
       newElement.onclick = function(e){
-        console.log(e.target.id);
+        alert(e.target.id);
       }
 
     }
 
-    var color_label = document.getElementById('color_label');
-    console.log(color_label);
-    color_label.x = svg_width/2;
-    color_label.y = svg_width/2;
-
-
   }
+
+
+
+
+
 
 
   return {

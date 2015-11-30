@@ -1,7 +1,7 @@
 {
   "version": "0.2",
-  "name": "Game Stub",
-  "description": "A hosted game app template",
+  "name": "Hexgame",
+  "description": "Guess the hex color",
   "launch_path": "/index.html",
   "icons": {
     "16": "/img/icons/mortar-16.png",
@@ -9,14 +9,14 @@
     "128": "/img/icons/mortar-128.png"
   },
   "developer": {
-    "name": "Your Name",
-    "url": "http://example.com"
+    "name": "Guilherme Cruz",
+    "url": "http://www.isotopic.com.br"
   },
   "installs_allowed_from": ["*"],
   "locales": {
-    "es": {
-      "name": "Plantilla de juego",
-      "description": "Plantilla para apps de juegos alojados en un servidor"
+    "pt": {
+      "name": "Hexgame",
+      "description": "Adivinhe a cor pelo hexadecimal"
     }
   },
   "default_locale": "en"

@@ -1,5 +1,5 @@
 /**
-* Game scenes manager.
+* All things related to going from one screen to another.
 */
 
 var ScreenManager = (function() {
@@ -11,7 +11,7 @@ var ScreenManager = (function() {
 
 
 
-  //Screens and corresponding element's states
+  //All screens and what must be visible in them
   var screens = {
     intro: {
       show: ['logo', 'intro', 'logo_isotopic']
@@ -23,22 +23,27 @@ var ScreenManager = (function() {
 
 
 
-  function showScreen(id) {
+  function showScreen(id, imediatly) {
 
-    //Hide or show corresponding sprites
+    //Imediatly skips any animation effects
+    var imd = imediatly || false;
+
+    //Hide or show the sprites
     for (var i in sprites){
 
       if( screens[id].show.indexOf(sprites[i])>=0 ){
-
-        document.getElementById(sprites[i]).style.display="";
+        
+          document.getElementById(sprites[i]).style.display="";
 
       }else{
 
-        document.getElementById(sprites[i]).style.display="none";
+          document.getElementById(sprites[i]).style.display="none";
+       
 
       }
       
     }
+
 
   }
 
