@@ -30,17 +30,18 @@ var ColorWheel = (function() {
     var r = (svg_width/2 - padding);
     var radian = ( Math.PI*2) / n;
 
-      //White circle below the others
-      var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
-      newElement.setAttributeNS(null,"cx","50%");
-      newElement.setAttributeNS(null,"cy","50%");
-      newElement.setAttributeNS(null,"r",r);
-      newElement.setAttributeNS(null, "stroke", 'rgb(255,255,255)');
+      //White circle under the others
+      var white = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
+      white.setAttributeNS(null,"cx","50%");
+      white.setAttributeNS(null,"cy","50%");
+      white.setAttributeNS(null,"r",r);
+      white.setAttributeNS(null, "stroke", 'rgb(255,255,255)');
       whitestrokeWidth = strokeWidth+4;
-      newElement.style.strokeWidth = whitestrokeWidth+"px";
-      newElement.style.fill = "none";
-      newElement.id = "path_base";
-      circle.appendChild(newElement);
+      white.style.strokeWidth = "0px";
+      white.style.strokeWidth = "0px";
+      white.style.fill = "none";
+      white.id = "path_base";
+      circle.appendChild(white);
 
     //Each one of the arcs
     for(var a=0; a<n; a++){
@@ -58,16 +59,29 @@ var ColorWheel = (function() {
       var green = Math.round(Math.random()*255);
       var blue = Math.round(Math.random()*255);
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
-      newElement.style.strokeWidth = strokeWidth+"px";
+      //newElement.style.strokeWidth = strokeWidth+"px";
+      newElement.style.strokeWidth = "1px";
       newElement.style.fill = "none";
       newElement.id = "path"+a;
       circle.appendChild(newElement);
+
+      arc_size = newElement.getTotalLength();
+      newElement.setAttribute('stroke-dasharray', arc_size + ' ' + arc_size);
+      newElement.setAttribute('stroke-dashoffset', 3*arc_size);
+
+
+      TweenLite.to(newElement, 0.10, {'stroke-dashoffset':2*arc_size, delay:a*.10, ease: Power0.easeNone});
+      TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay:(n*.10)});
 
       newElement.onclick = function(e){
         alert(e.target.id);
       }
 
     }
+
+    TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay:(n*.10)});
+
+    Sounds.yes.play();
 
   }
 
