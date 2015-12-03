@@ -8,11 +8,11 @@ var Sounds = (function() {
 
 
     var yes = new Howl({
-      urls: ['yes.mp3', 'yes.ogg']
+      urls: ['sound/yes.mp3', 'sound/yes.ogg']
     });
 
     var no = new Howl({
-      urls: ['no.mp3', 'no.ogg']
+      urls: ['sound/no.mp3', 'sound/no.ogg']
     });
 
 

@@ -10,13 +10,14 @@ var ColorWheel = (function() {
 
 
 
-  function generateCircle(svg, n){
+  function generateCircle(svg, n, delay){
 
     var n = n||2;
 
     var circle = document.getElementById(svg);
 
-    if(window.innerWidth<500){
+
+    if(window.innerWidth<780 || window.innerHeight<815 ){
       circle.style.width="300px";
       circle.style.height="300px";
     }else{
@@ -70,8 +71,8 @@ var ColorWheel = (function() {
       newElement.setAttribute('stroke-dashoffset', 3*arc_size);
 
 
-      TweenLite.to(newElement, 0.10, {'stroke-dashoffset':2*arc_size, delay:a*.10, ease: Power0.easeNone});
-      TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay:(n*.10)});
+      TweenLite.to(newElement, 0.10, {'stroke-dashoffset':2*arc_size, delay:delay+a*.10, ease: Power0.easeNone});
+      TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay:delay+(n*.10)});
 
       newElement.onclick = function(e){
         alert(e.target.id);
@@ -79,7 +80,11 @@ var ColorWheel = (function() {
 
     }
 
-    TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay:(n*.10)});
+    TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay:delay+(n*.10)});
+
+    var color_label = document.getElementById('color_label');
+    color_label.style['opacity'] = 0;
+    TweenLite.to(color_label, 0.4, {'opacity':1, delay:delay+0.4+(n*.10)});
 
     Sounds.yes.play();
 
