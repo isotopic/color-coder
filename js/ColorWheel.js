@@ -31,6 +31,25 @@ var ColorWheel = (function() {
     var r = (svg_width/2 - padding);
     var radian = ( Math.PI*2) / n;
 
+    //Cleanup svg
+    while (circle.lastChild) {
+        circle.removeChild(circle.lastChild);        
+    }
+
+    //Text label
+    var color_label = document.createElementNS("http://www.w3.org/2000/svg", 'text'); 
+    color_label.setAttribute("id", "color_label");
+    color_label.setAttributeNS(null,"x","50%");
+    color_label.setAttributeNS(null,"y","53%");
+    color_label.style['font-size'] = '35px'; 
+    color_label.style['fill'] = '#ffffff'; 
+    color_label.style['text-anchor'] = 'middle'; 
+    color_label.style['cursor'] = 'default'; 
+    color_label.style['letter-spacing'] = '2px'; 
+    color_label.style['text-transform'] = 'uppercase'; 
+    circle.appendChild(color_label);
+    
+
       //White circle under the others
       var white = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
       white.setAttributeNS(null,"cx","50%");
@@ -60,6 +79,9 @@ var ColorWheel = (function() {
       var green = Math.round(Math.random()*255);
       var blue = Math.round(Math.random()*255);
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
+
+      color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
+
       //newElement.style.strokeWidth = strokeWidth+"px";
       newElement.style.strokeWidth = "1px";
       newElement.style.fill = "none";
@@ -75,7 +97,8 @@ var ColorWheel = (function() {
       TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay:delay+(n*.10)});
 
       newElement.onclick = function(e){
-        alert(e.target.id);
+        //alert(e.target.id);
+        ScreenManager.showScreen('intro');
       }
 
     }
@@ -93,7 +116,13 @@ var ColorWheel = (function() {
 
 
 
-
+  function decimal2hex(d) {
+      var s = (+d).toString(16);
+      if(s.length < 2) {
+          s = '0' + s;
+      }
+      return s;
+  }
 
 
   return {
