@@ -7,12 +7,20 @@
 var ColorWheel = (function() {
 
 
+        var level_field = document.getElementById('level');
+        var record_field = document.getElementById('record');
 
+
+  var level = 1;
 
 
   function generateCircle(svg, n, delay){
 
     var n = n||2;
+
+    //One of them is correct
+    var n_correct = Math.round(Math.random()*n);
+
 
     var circle = document.getElementById(svg);
 
@@ -80,7 +88,13 @@ var ColorWheel = (function() {
       var blue = Math.round(Math.random()*255);
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
 
-      color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
+      //console.log(a + " - "+n_correct);
+      if(a==n_correct){
+        color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
+        newElement.isCorrect = true;
+      }else{
+        newElement.isCorrect = false;
+      }
 
       //newElement.style.strokeWidth = strokeWidth+"px";
       newElement.style.strokeWidth = "1px";
@@ -96,10 +110,41 @@ var ColorWheel = (function() {
       TweenLite.to(newElement, 0.10, {'stroke-dashoffset':2*arc_size, delay:delay+a*.10, ease: Power0.easeNone});
       TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay:delay+(n*.10)});
 
-      newElement.onclick = function(e){
-        //alert(e.target.id);
-        ScreenManager.showScreen('intro');
+
+      //Separar tudo isto em breve!
+      newElement.onclick = function(e){//alert(e.target.id);
+
+        var feedback_label = document.getElementById('feedback_label');
+
+        if(e.target.isCorrect){
+          level++;
+          feedback_label.innerHTML = 'Correct!';
+          ScreenManager.showScreen('feedback');
+          Sounds.yes.play();
+          feedback.onclick = function(){
+            ColorWheel.generateCircle('circle_svg', level+1, 0);
+            ScreenManager.showScreen('game');
+          }
+        }else{
+          level = 1;
+          feedback_label.innerHTML = 'Game over';
+          ScreenManager.showScreen('feedback');
+          Sounds.no.play();
+          feedback.onclick = function(){
+            ScreenManager.showScreen('intro');
+          }
+        }
+
+        //update labels
+
+        level_field.getElementsByTagName("span")[0].innerHTML = (level<10?'0':'')+(level);
+        if(level>Number( record_field.getElementsByTagName("span")[0].innerHTML)){
+          record_field.getElementsByTagName("span")[0].innerHTML = (level<10?'0':'')+(level);
+        }
+
+
       }
+
 
     }
 
@@ -109,7 +154,7 @@ var ColorWheel = (function() {
     color_label.style['opacity'] = 0;
     TweenLite.to(color_label, 0.4, {'opacity':1, delay:delay+0.4+(n*.10)});
 
-    Sounds.yes.play();
+    
 
   }
 
@@ -126,6 +171,7 @@ var ColorWheel = (function() {
 
 
   return {
+    level: level,
     generateCircle: generateCircle
   };
 

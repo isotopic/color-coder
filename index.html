@@ -5,10 +5,11 @@
 
     <title>Hexpro - Guess the hex</title>
     <meta name="description" content="Guess the hex">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-
-
+    <link rel="manifest" href="manifest.webapp">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/font.css">
   </head>
@@ -88,7 +89,7 @@
         <div class="box-wrap">
 
          <svg id="circle_svg" xmlns="http://www.w3.org/2000/svg"  style="font-weight:300" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <text id="color_label" x="50%" y="53%" style="font-size:35px; fill: #ffffff; text-anchor: middle; cursor:default">#C5E8A3</text>
+
         </svg>
 
        </div>
@@ -101,8 +102,45 @@
       </div>
 
       <div id="record" class="info-box">
-        record <span>05</span>
+        record <span>00</span>
       </div>
+
+
+
+      
+      <div id="feedback" class="box">
+        <div id="feedback_label" class="box-wrap">
+          ...
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

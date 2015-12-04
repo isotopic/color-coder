@@ -20,6 +20,10 @@ var ScreenManager = (function() {
   sprites.game.vars_active = {autoAlpha:1};
   sprites.game.vars_inactive = {autoAlpha:0};
 
+  sprites.feedback = document.getElementById('feedback');
+  sprites.feedback.vars_active = {autoAlpha:1};
+  sprites.feedback.vars_inactive = {autoAlpha:0};
+
   sprites.level = document.getElementById('level');
   sprites.level.vars_active = {autoAlpha:1, bottom:'10px'};
   sprites.level.vars_inactive = {autoAlpha:0, bottom:'5px'};
@@ -37,8 +41,9 @@ var ScreenManager = (function() {
   //The screens and what sprites are active.
   //All the rest is considered inactive.
   var screens = {
-    intro: [sprites.logo, sprites.intro, sprites.logo_isotopic],
-    game: [sprites.game, sprites.level, sprites.record, sprites.logo_isotopic]
+    intro:    [sprites.logo, sprites.intro, sprites.logo_isotopic],
+    game:     [sprites.game, sprites.level, sprites.record],
+    feedback: [sprites.feedback, sprites.level, sprites.record]
   };
 
 
@@ -76,6 +81,7 @@ var ScreenManager = (function() {
 
           
     }}
+
 
 
   }

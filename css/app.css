@@ -2,6 +2,7 @@ html, body {
     height: 100%;
 }
 body {
+  cursor: default;
   margin: 0;
   padding: 0;
   background-color:#333;
@@ -23,20 +24,12 @@ div{
 }
 
 
-
 #logo{
   position:absolute;
   text-align: center;
   width:100%;
   top:10px;
 }
-
- @media all and (max-width: 500px) {
-    #logo_svg{
-        width:190px !important;
-    }
-}
-
 
 
 .circle-bt{
@@ -58,22 +51,9 @@ div{
 
 #circle_svg{
   margin:0 auto;
-  width:500px;
-  height:500px; 
 }
 
 
-/*
- @media all and (max-width: 500px) {
-    #circle_svg {
-        width: 300px;
-        height: 300px;
-    }
-    #circle_svg #color_label {
-        padding-top:5px;
-    }
-}
-*/
 
 .info-box{
   font-weight: 300;
@@ -124,10 +104,6 @@ div{
 
 
 
-
-
-
-
 .box{
   position: absolute;
   display:table;
@@ -140,6 +116,8 @@ div{
 .box-wrap{
   display:table-cell;
   vertical-align: middle;
+
+
 }
 
 

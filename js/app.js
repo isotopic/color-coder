@@ -10,7 +10,7 @@ window.onload = function() {
 
 		ScreenManager.showScreen('game');
 
-		ColorWheel.generateCircle('circle_svg', 3, 1);
+		ColorWheel.generateCircle('circle_svg', 2, 1);
 
 	}   
 	  
