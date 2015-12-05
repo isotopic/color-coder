@@ -9,8 +9,8 @@ var ScreenManager = (function() {
   //All sprites and corresponding states 'on' and 'off' 
   var sprites = {};
   sprites.logo = document.getElementById('logo_svg');
-  sprites.logo.vars_active = {width:'300px'};
-  sprites.logo.vars_inactive = {width:'200px'};
+  sprites.logo.vars_active = {width:'200px', 'margin-top':sprites.logo.style['margin-top']};
+  sprites.logo.vars_inactive = {width:'150px', 'margin-top':'30px'};
 
   sprites.intro = document.getElementById('intro');
   sprites.intro.vars_active = {autoAlpha:1};
@@ -25,11 +25,11 @@ var ScreenManager = (function() {
   sprites.feedback.vars_inactive = {autoAlpha:0};
 
   sprites.level = document.getElementById('level');
-  sprites.level.vars_active = {autoAlpha:1, bottom:'10px'};
+  sprites.level.vars_active = {autoAlpha:1, bottom:'15px'};
   sprites.level.vars_inactive = {autoAlpha:0, bottom:'5px'};
 
   sprites.record = document.getElementById('record');
-  sprites.record.vars_active = {autoAlpha:1, bottom:'10px'};
+  sprites.record.vars_active = {autoAlpha:1, bottom:'15px'};
   sprites.record.vars_inactive = {autoAlpha:0, bottom:'5px'};
 
   sprites.logo_isotopic = document.getElementById('logo_isotopic');

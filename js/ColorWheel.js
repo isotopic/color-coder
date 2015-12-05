@@ -88,8 +88,10 @@ var ColorWheel = (function() {
       var blue = Math.round(Math.random()*255);
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
 
-      //console.log(a + " - "+n_correct);
+      
+        console.log(a + " - "+n_correct);
       if(a==n_correct){
+        console.log('write')
         color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
         newElement.isCorrect = true;
       }else{
@@ -122,7 +124,7 @@ var ColorWheel = (function() {
           ScreenManager.showScreen('feedback');
           Sounds.yes.play();
           feedback.onclick = function(){
-            ColorWheel.generateCircle('circle_svg', level+1, 0);
+            ColorWheel.generateCircle('circle_svg', level+1, 0.5);
             ScreenManager.showScreen('game');
           }
         }else{

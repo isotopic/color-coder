@@ -28,8 +28,8 @@ div{
   position:absolute;
   text-align: center;
   width:100%;
-  top:10px;
 }
+
 
 
 .circle-bt{
@@ -59,13 +59,19 @@ div{
   font-weight: 300;
   font-size:24px;
   text-align: center;
+  padding:0;
   color:#999;
   width:70px;
-  line-height: 40px;
+  height:85px;
+  line-height: 24px;
   cursor:default;
 }
 .info-box span{
+  display:block;
+  margin:0;
+  padding:0;
   color:#eee;
+  line-height: 50px;
   font-weight: 500;
   font-size:60px;
 }
@@ -73,14 +79,14 @@ div{
 
 #level{
   position: absolute;
-  left:10px;
-  bottom: 10px;
+  left:15px;
+  bottom: 5px;
 }
 
 #record{
   position: absolute;
-  right:10px;
-  bottom: 10px;
+  right:15px;
+  bottom: 5px;
 }
 
 
@@ -96,7 +102,7 @@ div{
   position:absolute;
   text-align: center;
   width:100%;
-  bottom:10px;
+  bottom:40px;
 }
 #logo_isotopic svg{
 
