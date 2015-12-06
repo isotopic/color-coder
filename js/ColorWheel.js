@@ -89,9 +89,8 @@ var ColorWheel = (function() {
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
 
       
-        console.log(a + " - "+n_correct);
+
       if(a==n_correct){
-        console.log('write')
         color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
         newElement.isCorrect = true;
       }else{
