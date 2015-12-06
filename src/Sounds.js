@@ -17,7 +17,6 @@ var Sounds = (function() {
 
 
 
-
   return {
     yes: yes,
      no: no

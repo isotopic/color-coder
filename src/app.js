@@ -2,7 +2,6 @@
 window.onload = function() {
 
 
-
     ScreenManager.showScreen('intro', true);
 	
 

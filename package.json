@@ -1,0 +1,29 @@
+{
+  "name": "color-coder",
+  "version": "0.0.3",
+  "description": "Hexadecimal color coding game.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isotopic/color-coder.git"
+  },
+  "author": "guilhermecruz@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isotopic/color-coder/issues"
+  },
+  "homepage": "https://github.com/isotopic/color-coder#readme",
+  "devDependencies": {
+    "graceful-fs": "^4.1.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1"
+  },
+  "dependencies": {
+  }
+}

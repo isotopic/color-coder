@@ -19,7 +19,7 @@ var ColorWheel = (function() {
     var n = n||2;
 
     //One of them is correct
-    var n_correct = Math.round(Math.random()*n);
+    var a_correct = Math.floor(Math.random()*n);
 
 
     var circle = document.getElementById(svg);
@@ -53,12 +53,11 @@ var ColorWheel = (function() {
     color_label.style['fill'] = '#ffffff'; 
     color_label.style['text-anchor'] = 'middle'; 
     color_label.style['cursor'] = 'default'; 
-    color_label.style['letter-spacing'] = '2px'; 
     color_label.style['text-transform'] = 'uppercase'; 
     circle.appendChild(color_label);
     
 
-      //White circle under the others
+      //White circle under the arcs
       var white = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
       white.setAttributeNS(null,"cx","50%");
       white.setAttributeNS(null,"cy","50%");
@@ -70,6 +69,8 @@ var ColorWheel = (function() {
       white.style.fill = "none";
       white.id = "path_base";
       circle.appendChild(white);
+
+
 
     //Each one of the arcs
     for(var a=0; a<n; a++){
@@ -88,9 +89,8 @@ var ColorWheel = (function() {
       var blue = Math.round(Math.random()*255);
       newElement.setAttributeNS(null, "stroke", 'rgb('+red+','+green+','+blue+')');
 
-      
 
-      if(a==n_correct){
+      if(a==a_correct){
         color_label.textContent = "#"+decimal2hex(red)+""+decimal2hex(green)+""+decimal2hex(blue);
         newElement.isCorrect = true;
       }else{
