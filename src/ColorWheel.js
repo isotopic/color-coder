@@ -7,10 +7,8 @@
 var ColorWheel = (function() {
 
 
-        var level_field = document.getElementById('level');
-        var record_field = document.getElementById('record');
-
-
+  var level_field = document.getElementById('level');
+  var record_field = document.getElementById('record');
   var level = 1;
 
 

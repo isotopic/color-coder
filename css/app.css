@@ -5,7 +5,7 @@ body {
   cursor: default;
   margin: 0;
   padding: 0;
-  background-color:#333;
+  background-color:#222;
   color:#fff;
   font-family: "Dosis";
 
@@ -102,7 +102,7 @@ div{
   position:absolute;
   text-align: center;
   width:100%;
-  bottom:40px;
+  bottom:30px;
 }
 #logo_isotopic svg{
 

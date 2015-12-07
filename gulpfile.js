@@ -31,7 +31,13 @@ gulp.task('compile-js', function () {
 
 
 gulp.task('lint', function () {
-    gulp.src(js_sources)
+    gulp.src([
+        'src/app.js',
+        'src/Game.js',
+        'src/ScreenManager.js',
+        'src/ColorWheel.js',
+        'src/Sounds.js'
+        ])
     .pipe(jshint({ sub: true, loopfunc: true }))
     .pipe(jshint.reporter());
 });

@@ -1,12 +1,11 @@
 /**
 * ScreenManager
 *
-* This one takes care of transitions between the screens of the game.
+* This one takes care of transitioning between the screens of the game.
 */
 var ScreenManager = (function() {
 
-
-  //All sprites and corresponding states 'on' and 'off' 
+  // All sprites and corresponding 'on' and 'off' states 
   var sprites = {};
   sprites.logo = document.getElementById('logo_svg');
   sprites.logo.vars_active = {width:'200px', 'margin-top':sprites.logo.style['margin-top']};
@@ -37,9 +36,7 @@ var ScreenManager = (function() {
   sprites.logo_isotopic.vars_inactive = {autoAlpha:0};
 
 
-
-  //The screens and what sprites are active.
-  //All the rest is considered inactive.
+  // All game screens, and what sprites must be active in each one.
   var screens = {
     intro:    [sprites.logo, sprites.intro, sprites.logo_isotopic],
     game:     [sprites.game, sprites.level, sprites.record],
@@ -47,46 +44,47 @@ var ScreenManager = (function() {
   };
 
 
+  // Displays one of the screens from screens[]
+  function showScreen(id, _instantly) {
 
-
-  function showScreen(id, instantly) {
-
-
-    var instantly = instantly || false;
+    var instantly = (_instantly || false);
     var counter = 0;
 
-    for (var i in sprites) { if (sprites.hasOwnProperty(i)) {
+    for (var i in sprites) { 
 
-      var anim_vars = {};
+      if (sprites.hasOwnProperty(i)) {
 
-      if( screens[id].indexOf(sprites[i])>=0 ){
+        var anim_vars = {};
+        var prop;
 
-        //Active state
-        anim_vars.delay = 0.3+(counter++*0.1);
-        for (var prop in sprites[i].vars_active) {
-          anim_vars[prop] = sprites[i].vars_active[prop]; 
+        if( screens[id].indexOf(sprites[i])>=0 ){
+
+          //Active state
+          anim_vars.delay = 0.3+(counter++*0.1);
+          for ( prop in sprites[i].vars_active) {
+            anim_vars[prop] = sprites[i].vars_active[prop]; 
+          }
+          TweenLite.to(sprites[i], (instantly?0:0.5), anim_vars);
+
+        }else{
+
+          //Inactive state
+          anim_vars.delay = 0;
+          for ( prop in sprites[i].vars_inactive) {
+            anim_vars[prop] = sprites[i].vars_inactive[prop]; 
+          }
+          TweenLite.to(sprites[i], (instantly?0:0.3), anim_vars);
+
         }
-        TweenLite.to(sprites[i], (instantly?0:0.5), anim_vars);
-
-      }else{
-
-        //Inactive state
-        anim_vars.delay = 0;
-        for (var prop in sprites[i].vars_inactive) {
-          anim_vars[prop] = sprites[i].vars_inactive[prop]; 
-        }
-        TweenLite.to(sprites[i], (instantly?0:0.3), anim_vars);
 
       }
 
-          
-    }}
-
-
+    }
 
   }
 
 
+  
 
 
 
