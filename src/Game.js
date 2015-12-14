@@ -13,7 +13,7 @@ var Game = (function() {
  	var record_field = document.getElementById('record');
 
 	var level = 0;
-	var record = 0;
+	var record = getLocalRecord();
 	var accept_click = false;
 
 
@@ -73,9 +73,18 @@ var Game = (function() {
 	function updateHud(){
         if( level>record ){
           record=level;
+          setLocalRecord(record);
         }
 		level_field.getElementsByTagName("span")[0].innerHTML = (level<10?'0':'')+(level);
 		record_field.getElementsByTagName("span")[0].innerHTML = (record<10?'0':'')+(record);
+	}
+
+
+	function setLocalRecord(r){
+		localStorage.record = r;
+	}
+	function getLocalRecord(){
+		return localStorage.record || 0;
 	}
 	
 
