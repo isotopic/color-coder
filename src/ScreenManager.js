@@ -64,6 +64,7 @@ var ScreenManager = (function() {
           for ( prop in sprites[i].vars_active) {
             anim_vars[prop] = sprites[i].vars_active[prop]; 
           }
+          sprites[i].style.pointerEvents = 'auto';
           TweenLite.to(sprites[i], (instantly?0:0.5), anim_vars);
 
         }else{
@@ -73,6 +74,7 @@ var ScreenManager = (function() {
           for ( prop in sprites[i].vars_inactive) {
             anim_vars[prop] = sprites[i].vars_inactive[prop]; 
           }
+          sprites[i].style.pointerEvents = 'none';
           TweenLite.to(sprites[i], (instantly?0:0.3), anim_vars);
 
         }

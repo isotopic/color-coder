@@ -7,6 +7,8 @@
 var ColorWheel = (function() {
 
 
+  // Generates (n) 'different' colors. 
+  // Actually this method leaves a chance of 1 in 16777215 for getting two identical colors on level 1.
   function generateColors(n){
     var colors = [];
     for(var a=0;a<n;a++){
@@ -29,7 +31,7 @@ var ColorWheel = (function() {
     var n = n||2;
     var colors = generateColors(n);
 
-    // One of them is randomly choosen to be considered correct
+    // One of them is randomly choosen to be considered correct and have the hex displayed
     var a_correct = Math.floor(Math.random()*n);
 
     // The size of the circle is based on the available screen...
@@ -79,6 +81,9 @@ var ColorWheel = (function() {
     white.id = "path_base";
     circle.appendChild(white);
 
+    // How much time the animation must take. Don't forget to add the delay passed by parameter!
+    var total_time = 0.6;
+
 
     // Finally, each one of the arcs
     for(var a=0; a<n; a++){
@@ -86,8 +91,8 @@ var ColorWheel = (function() {
       // If you've forgotten how to define svg arcs, read this:
       // http://tutorials.jenkov.com/svg/path-element.html#arcs
       var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); 
-      arc0 = radian*a - Math.PI/2;
-      arc1 = radian*(a+1) - Math.PI/2 - (Math.PI/400);
+      arc0 = radian*a - Math.PI/2; 
+      arc1 = radian*(a+1) - Math.PI/2 - (Math.PI/400); //This Math.PI/400 is to have a little gap between the arcs
       x0 = (Math.cos(arc0)*r) + (r+padding);
       y0 = (Math.sin(arc0)*r) + (r+padding);
       x1 = (Math.cos(arc1)*r) + (r+padding);
@@ -105,27 +110,30 @@ var ColorWheel = (function() {
       }
 
       //newElement.style.strokeWidth = strokeWidth+"px";
-      newElement.style.strokeWidth = "1px";
+      newElement.style.strokeWidth = "5px";
       newElement.style.fill = "none";
       newElement.id = "path"+a;
       circle.appendChild(newElement);
 
       // Animate the stroke dashoffset
+
       arc_size = newElement.getTotalLength();
       newElement.setAttribute('stroke-dasharray', arc_size + ' ' + arc_size);
       newElement.setAttribute('stroke-dashoffset', 3*arc_size);
-      TweenLite.to(newElement, 0.10, {'stroke-dashoffset':2*arc_size, delay: delay+ a*0.1, ease: Power0.easeNone});
-      TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay: delay+ (n*0.1)});
+
+
+      TweenLite.to(newElement, total_time/n, {'stroke-dashoffset':2*arc_size, delay: (a/n)*total_time + delay, ease: Power0.easeNone});
+      TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay: total_time + delay});
 
     }
 
     // Animate the white circle base
-    TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay:delay+(n*.10)});
+    TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay: total_time + delay });
 
-    // Animeta the color label
+    // Animate the color label
     var color_label = document.getElementById('color_label');
     color_label.style['opacity'] = 0;
-    TweenLite.to(color_label, 0.4, {'opacity':1, delay:delay+0.4+(n*.10)});
+    TweenLite.to(color_label, 0.4, {'opacity':1, delay: total_time + delay + 0.4});
 
   }
 
