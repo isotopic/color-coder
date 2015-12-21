@@ -3,7 +3,7 @@
 
   "name": "Color Coder",
 
-  "short_name": "#C0D3R",
+  "short_name": "Color Coder",
 
   "description": "Another hexadecimal color game.",
 
@@ -14,6 +14,8 @@
   "display": "standalone",
 
   "orientation": "portrait",
+  
+  "background_color": "#333",
 
   "icons": [
     {
