@@ -122,8 +122,12 @@ div{
 .box-wrap{
   display:table-cell;
   vertical-align: middle;
+}
 
-
+.notification-text{
+  font-size:30px;
+  font-size: 40px;
+  font-weight: 300;
 }
 
 

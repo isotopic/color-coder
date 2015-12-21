@@ -19,8 +19,7 @@ var ColorWheel = (function() {
 
 
   /*
-  * This function draws a circle made of n different colored arcs,
-  * and emits an event when the user clicks on some of them.
+  * This function draws a circle made of n different colored arcs.
   */
   function generateCircle(svg, n, delay){
 

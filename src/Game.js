@@ -27,7 +27,6 @@ var Game = (function() {
 
 	// Starts a fresh new game and listens to the circle
 	function start(){
-		console.log("start");
 		level = 1;
 		updateHud();
 		ScreenManager.showScreen('game');

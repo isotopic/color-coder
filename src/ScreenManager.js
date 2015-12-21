@@ -20,8 +20,8 @@ var ScreenManager = (function() {
   sprites.game.vars_inactive = {autoAlpha:0};
 
   sprites.feedback = document.getElementById('feedback');
-  sprites.feedback.vars_active = {autoAlpha:1};
-  sprites.feedback.vars_inactive = {autoAlpha:0};
+  sprites.feedback.vars_active = {autoAlpha:1, 'padding-top':'0px'};
+  sprites.feedback.vars_inactive = {autoAlpha:0, 'padding-top':'20px'};
 
   sprites.level = document.getElementById('level');
   sprites.level.vars_active = {autoAlpha:1, bottom:'15px'};
