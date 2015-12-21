@@ -22,7 +22,7 @@ var Game = (function() {
 		ScreenManager.showScreen('intro', true);
 		play_bt.onclick = function(){
 			start();
-		};  
+		};
 	}
 
 	// Starts a fresh new game and listens to the circle
@@ -47,9 +47,8 @@ var Game = (function() {
 	// Checks if the user has targeted the right color
 	function nextLevel(){
 		level++;
-        feedback_label.innerHTML = 'Correct!';
         ScreenManager.showScreen('feedback');
-        Sounds.yes.play();
+        ColorWheel.giveFeedback('feedback_svg', 'correct', 0.5);
         feedback.onclick = function(){
         	accept_click = true;
         	ColorWheel.generateCircle('circle_svg', level+1, 0.5);
@@ -61,13 +60,13 @@ var Game = (function() {
 	// Get back to the beginning
 	function gameOver(){
 		level = 1;
-        feedback_label.innerHTML = 'Game over';
         ScreenManager.showScreen('feedback');
-        Sounds.no.play();
+        ColorWheel.giveFeedback('feedback_svg', 'incorrect', 0.5);
         feedback.onclick = function(){
         	ScreenManager.showScreen('intro');
         }
 	}
+
 
 	function updateHud(){
         if( level>record ){
@@ -85,7 +84,7 @@ var Game = (function() {
 	function getLocalRecord(){
 		return localStorage.record || 0;
 	}
-	
+
 
 	return {
 		setup:setup
