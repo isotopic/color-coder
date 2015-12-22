@@ -12,7 +12,7 @@ var js_sources = [
     'src/howler.min.js', 
     'src/Sounds.js', 
     'src/ScreenManager.js', 
-    'src/ColorWheel.js',
+    'src/Graphics.js',
     'src/Game.js', 
     'src/app.js'
 ];
@@ -35,7 +35,7 @@ gulp.task('lint', function () {
         'src/app.js',
         'src/Game.js',
         'src/ScreenManager.js',
-        'src/ColorWheel.js',
+        'src/Graphics.js',
         'src/Sounds.js'
         ])
     .pipe(jshint({ sub: true, loopfunc: true }))
@@ -44,5 +44,5 @@ gulp.task('lint', function () {
 
 
 gulp.task('watch', function () {
-    gulp.watch(js_sources, ['build']);
+    gulp.watch(js_sources, ['lint','build']);
 });

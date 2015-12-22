@@ -1,10 +1,10 @@
 /**
-* ColorWheel
+* Graphics
 *
-* This one takes care of the fancy colored circle.
+* This object takes care of dynamic graphics.
 */
 
-var ColorWheel = (function() {
+var Graphics = (function() {
 
 
   // Generates (n) 'different' colors.
@@ -19,15 +19,17 @@ var ColorWheel = (function() {
 
 
   /*
-  * This function draws a circle made of n different colored arcs.
+  * Draws a circle made of n different colored arcs.
   */
   function generateCircle(svg, n, delay){
+
+    delay = (delay===undefined?0.3:delay);
 
     // The id of the target svg element
     var circle = document.getElementById(svg);
 
     // How many pieces?
-    var n = n||2;
+    n = n||2;
     var colors = generateColors(n);
 
     // One of them is randomly choosen to be considered correct and have the hex displayed
@@ -66,7 +68,6 @@ var ColorWheel = (function() {
     color_label.style['text-transform'] = 'uppercase';
     circle.appendChild(color_label);
 
-
     // A thicker white circle underneath the arcs gives us a nice white border
     var white = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
     white.setAttributeNS(null,"cx","50%");
@@ -83,10 +84,8 @@ var ColorWheel = (function() {
     // How much time the animation must take. Don't forget to add the delay passed by parameter!
     var total_time = 0.6;
 
-
     // Finally, each one of the arcs
     for(var a=0; a<n; a++){
-
       // If you've forgotten how to define svg arcs, read this:
       // http://tutorials.jenkov.com/svg/path-element.html#arcs
       var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path');
@@ -115,22 +114,19 @@ var ColorWheel = (function() {
       circle.appendChild(newElement);
 
       // Animate the stroke dashoffset
-
       arc_size = newElement.getTotalLength();
       newElement.setAttribute('stroke-dasharray', arc_size + ' ' + arc_size);
       newElement.setAttribute('stroke-dashoffset', 3*arc_size);
-
-
       TweenLite.to(newElement, total_time/n, {'stroke-dashoffset':2*arc_size, delay: (a/n)*total_time + delay, ease: Power0.easeNone});
+      // Animate the width a little later
       TweenLite.to(newElement, 0.4, {'strokeWidth':strokeWidth, delay: total_time + delay});
-
     }
 
     // Animate the white circle base
     TweenLite.to(white, 0.4, {'strokeWidth':whitestrokeWidth, delay: total_time + delay });
 
     // Animate the color label
-    var color_label = document.getElementById('color_label');
+    color_label = document.getElementById('color_label');
     color_label.style['opacity'] = 0;
     TweenLite.to(color_label, 0.4, {'opacity':1, delay: total_time + delay + 0.4});
 
@@ -148,8 +144,10 @@ var ColorWheel = (function() {
 
 
 
-  // Draw and animates feedback graphics (user has got right or wrong)
+  // Draw and animates feedback graphics (when user has passed a level or not)
   function giveFeedback(svg, type, delay){
+
+    delay = (delay===undefined?0.3:delay);
 
   	var feedback = document.getElementById(svg);
   	// Cleaning up
@@ -160,21 +158,20 @@ var ColorWheel = (function() {
     var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
     circle.setAttributeNS(null,"cx","50");
     circle.setAttributeNS(null,"cy","50");
-    circle.setAttributeNS(null,"r","20");
+    circle.setAttributeNS(null,"r","0");
     circle.setAttributeNS(null, "stroke", (type=="correct"?"#88dd99":"#dd9988"));
-    circle.style.strokeWidth = "2px";
+    circle.style.strokeWidth = "25px";
     circle.style.fill = "none";
     circle.id = "feedback_circle";
     feedback.appendChild(circle);
 
-
-    // path showing a V of X sign
+    // The path showing a 'V' or an 'X' sign
     var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
     if(type=='correct'){
-	    path.setAttributeNS(null,"d","M30,47 L45,68 L67,36");
+	    path.setAttributeNS(null,"d","M36,48 L48,64 L64,40");
 	    path.setAttributeNS(null, "stroke", "#77cc88");
     }else{
-    	path.setAttributeNS(null,"d","M35,35 L65,65 M65,35 L35,65");
+    	path.setAttributeNS(null,"d","M40,40 L60,60 M60,40 L40,60");
     	path.setAttributeNS(null, "stroke", "#cc7788");
     }
     path.setAttributeNS(null, "stroke-width", "5");
@@ -183,21 +180,20 @@ var ColorWheel = (function() {
     path.setAttributeNS(null, "stroke-linejoin", "round");
 		feedback.appendChild(path);
 
-
-    // Animate these two guys
-    TweenLite.to(circle, 0.2, {attr:{r:37}, delay: delay });
-    var path_size = path.getTotalLength();
-    path.setAttribute('stroke-dasharray', path_size + ' ' + path_size);
+    // Animate the little circle...
+    TweenLite.to(circle, 0.2, {attr:{r:35}, 'strokeWidth':2, delay: delay });
+    // ...and the path
+    var path_size = path.getTotalLength()+4;
+    path.setAttribute('stroke-dasharray', path_size + ',' + path_size);
     path.setAttribute('stroke-dashoffset', 3*path_size);
-    TweenLite.to(path, 0.3, {'stroke-dashoffset': 2*path_size, delay: delay+0.15});
+    TweenLite.to(path, 0.3, {'stroke-dashoffset': 2*path_size, delay: delay+0.2});
 
-
+    // Bring some noise
 		if(type=="correct"){
 			Sounds.yes.play();
 		}else{
 			Sounds.no.play();
 		}
-
 
   }
 

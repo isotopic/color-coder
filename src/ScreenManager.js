@@ -45,9 +45,10 @@ var ScreenManager = (function() {
 
 
   // Displays one of the screens from screens[]
-  function showScreen(id, _instantly) {
+  function showScreen(id, _time) {
 
-    var instantly = (_instantly || false);
+    var time = (_time===undefined?0.3:_time);
+
     var counter = 0;
 
     for (var i in sprites) {
@@ -65,7 +66,7 @@ var ScreenManager = (function() {
             anim_vars[prop] = sprites[i].vars_active[prop];
           }
           sprites[i].style.pointerEvents = 'auto';
-          TweenLite.to(sprites[i], (instantly?0:0.5), anim_vars);
+          TweenLite.to(sprites[i], time, anim_vars);
 
         }else{
 
@@ -75,7 +76,7 @@ var ScreenManager = (function() {
             anim_vars[prop] = sprites[i].vars_inactive[prop];
           }
           sprites[i].style.pointerEvents = 'none';
-          TweenLite.to(sprites[i], (instantly?0:0.3), anim_vars);
+          TweenLite.to(sprites[i], time, anim_vars);
 
         }
 

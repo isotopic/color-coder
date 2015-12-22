@@ -6,7 +6,6 @@
 
 var Game = (function() {
 
-
 	var circle_svg = document.getElementById('circle_svg');
 	var play_bt = document.getElementById('play_bt');
 	var level_field = document.getElementById('level');
@@ -19,7 +18,7 @@ var Game = (function() {
 
 	// Sets up the first screen
 	function setup(){
-		ScreenManager.showScreen('intro', true);
+		ScreenManager.showScreen('intro', 0);
 		play_bt.onclick = function(){
 			start();
 		};
@@ -30,7 +29,7 @@ var Game = (function() {
 		level = 1;
 		updateHud();
 		ScreenManager.showScreen('game');
-		ColorWheel.generateCircle('circle_svg', 2, 1);
+		Graphics.generateCircle('circle_svg', 2, 0.3);
 		accept_click = true;
 		circle_svg.onclick = function(event){
 			if( typeof(event.target.isCorrect) !== 'undefined' && accept_click){
@@ -41,30 +40,30 @@ var Game = (function() {
 					gameOver();
 				}
 			}
-		}
+		};
 	}
 
 	// Checks if the user has targeted the right color
 	function nextLevel(){
 		level++;
-        ScreenManager.showScreen('feedback');
-        ColorWheel.giveFeedback('feedback_svg', 'correct', 0.5);
+        ScreenManager.showScreen('feedback', 0);
+        Graphics.giveFeedback('feedback_svg', 'correct', 0.2);
         feedback.onclick = function(){
         	accept_click = true;
-        	ColorWheel.generateCircle('circle_svg', level+1, 0.5);
+        	Graphics.generateCircle('circle_svg', level+1, 0.5);
         	ScreenManager.showScreen('game');
-        }
+        };
         updateHud();
 	}
 
 	// Get back to the beginning
 	function gameOver(){
 		level = 1;
-        ScreenManager.showScreen('feedback');
-        ColorWheel.giveFeedback('feedback_svg', 'incorrect', 0.5);
+        ScreenManager.showScreen('feedback', 0);
+        Graphics.giveFeedback('feedback_svg', 'incorrect', 0.2);
         feedback.onclick = function(){
         	ScreenManager.showScreen('intro');
-        }
+        };
 	}
 
 
