@@ -36,19 +36,19 @@ var Graphics = (function() {
     var a_correct = Math.floor(Math.random()*n);
 
     // The size of the circle is based on the available screen...
-    if(window.innerWidth<780 || window.innerHeight<815 ){
-      circle.style.width="300px";
-      circle.style.height="300px";
+    if(window.innerWidth<768 || window.innerHeight<815){
+      size="300px";
     }else{
-      circle.style.width="600px";
-      circle.style.height="600px";
+      size="500px";
     }
-
-    // ...and all the measurement is based on it.
+    circle.style.width = size;
+    circle.style.height = size;
+    // ...and the rest of the settings is based on it.
     var svg_width = circle.getBoundingClientRect().width;
     var strokeWidth = (svg_width >= 500 ? 90 : 60);
     var padding = Math.ceil(strokeWidth/2)+10;
     var r = (svg_width/2 - padding);
+    // Now we divide a full circle (Math.PI*2) by the number of pieces we want.
     var radian = ( Math.PI*2) / n;
 
     // Removes previous elements inside the svg, if any

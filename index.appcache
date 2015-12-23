@@ -1,10 +1,9 @@
 CACHE MANIFEST
-#20151220-0002
-
+20151221-0007
 
 index.html
-app.css
-font.css
-color-coder.js
-yes.mp3
-no.mp3
+css/app.css
+css/font.css
+js/color-coder.js
+sound/yes.mp3
+sound/no.mp3

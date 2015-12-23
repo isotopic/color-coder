@@ -9,7 +9,7 @@ var ScreenManager = (function() {
   var sprites = {};
   sprites.logo = document.getElementById('logo_svg');
   sprites.logo.vars_active = {width:'200px', 'margin-top':sprites.logo.style['margin-top']};
-  sprites.logo.vars_inactive = {width:'150px', 'margin-top':'30px'};
+  sprites.logo.vars_inactive = {width:'150px', 'margin-top':'20px'};
 
   sprites.intro = document.getElementById('intro');
   sprites.intro.vars_active = {autoAlpha:1};
