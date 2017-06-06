@@ -9,11 +9,11 @@
     <name>Color Coder</name>
 
     <description>
-        Can you guess the hex colors?
+        Roses are #FF0000, violets are #0000FF. If this makes sense, this game is for you.
     </description>
 
     <author href="http://www.isotopic.com.br" email="gulhermecruz@gmail.com">
-        Guilherme Cruz @ Isotopic
+        Isotopic Team
     </author>
 
     <!-- Define the main entry-point to the application -->

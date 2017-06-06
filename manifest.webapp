@@ -1,11 +1,11 @@
 {
-  "version": "0.6",
+  "version": "0.0.2",
 
   "name": "Color Coder",
 
-  "short_name": "Color Coder",
+  "short_name": "ColorCoder",
 
-  "description": "Another hexadecimal color game.",
+  "description": "Roses are #FF0000, violets are #0000FF. If this makes sense, this game is for you.",
 
   "launch_path": "index.html",
 
@@ -35,7 +35,7 @@
 
   "locales": {
     "pt": {
-      "name": "Color Game",
+      "name": "Color Coder",
       "description": "Jogo de cores hexadecimais"
     }
   },
