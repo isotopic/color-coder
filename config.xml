@@ -16,6 +16,8 @@
         Isotopic Team
     </author>
 
+    <platform name="android" />
+
     <!-- Define the main entry-point to the application -->
     <content src="index.html" />
 
