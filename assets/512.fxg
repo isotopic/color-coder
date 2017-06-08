@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="512" viewWidth="512" ATE:version="1.0.0" flm:version="1.0.0" d:id="1" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008">
+  <Library/>
+  <Group blendMode="normal" d:type="layer" d:userLabel="Layer 1">
+    <Group flm:isDrawingObject="false">
+      <Path data="M97.3 48.95 177.05 187 17.3 187Z">
+        <fill>
+          <SolidColor color="#FFFF7F"/>
+        </fill>
+      </Path>
+      <Path data="M97.3 48.95 415.25 48.95 415.25 49.45Q414.75 50.25 414.2 50.75L413.4 52.35 321.4 187 177.05 187Z">
+        <fill>
+          <SolidColor color="#7FFF7F"/>
+        </fill>
+      </Path>
+      <Path data="M256.25 324.8 177.05 463.1 17.3 187 184.35 199.8Z">
+        <fill>
+          <SolidColor color="#FF7F7F"/>
+        </fill>
+      </Path>
+      <Path data="M494.75 187 336 463.1 263.6 312.25 336 187Z">
+        <fill>
+          <SolidColor color="#7F7FFF"/>
+        </fill>
+      </Path>
+      <Path data="M415.25 48.95 494.75 187 336 187 413.4 52.35 414.2 50.75Q414.75 50.25 415.25 49.45Z">
+        <fill>
+          <SolidColor color="#7FFFFF"/>
+        </fill>
+      </Path>
+      <Path data="M177.05 463.1 256.25 324.8 336 463.1Z">
+        <fill>
+          <SolidColor color="#FF7EFF"/>
+        </fill>
+      </Path>
+    </Group>
+  </Group>
+  <Private>
+      <xfl:PrivateElement d:ref="#1" xmlns:xfl="http://ns.adobe.com/xfl/2008/">
+        <xfl:publishSettings xfl:source=""/>
+        <xfl:mobileSettings xfl:source=""/>
+        <xfl:as3ExportItems/>
+      </xfl:PrivateElement>
+    </Private>
+  </Graphic>
