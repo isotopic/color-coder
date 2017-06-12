@@ -1,4 +1,4 @@
-// Cache first
+// Cache first policy
 
 var CACHE_NAME = 'v1';
 
