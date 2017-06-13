@@ -1,5 +1,4 @@
-//Cache first, network later
-
+// Cache first, network later
 var CACHE_NAME = 'v1';
 
 var urlsToCache = [

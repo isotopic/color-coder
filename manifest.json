@@ -1,24 +1,14 @@
 {
   "version": "0.1.0",
-
   "name": "Color Coder",
-
   "short_name": "ColorCoder",
-
   "description": "Roses are #FF0000, violets are #0000FF. If this makes sense, this game is for you.",
-
   "launch_path": "index.html",
-
   "start_url": "index.html",
-
   "display": "standalone",
-
   "orientation": "portrait",
-  
   "background_color": "#333",
-
   "theme_color": "#333",
-
   "icons": [
     {
       "src": "icon192.png",
@@ -31,21 +21,17 @@
       "type": "image/png"
     }
   ],
-
   "developer": {
     "name": "Guilherme Cruz",
     "email": "guilhermecruz@gmail.com",
     "url": "http://www.isotopic.com.br"
   },
-
   "installs_allowed_from": ["*"],
-
   "locales": {
     "pt": {
       "name": "Color Coder",
       "description": "Jogo de cores hexadecimais"
     }
   },
-
   "default_locale": "en"
 }
