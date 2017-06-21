@@ -1,5 +1,4 @@
 {
-  "version": "0.1.0",
   "name": "Color Coder",
   "short_name": "ColorCoder",
   "description": "Roses are #FF0000, violets are #0000FF. If this makes sense, this game is for you.",
@@ -7,8 +6,8 @@
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#333",
-  "theme_color": "#333",
+  "background_color": "#333333",
+  "theme_color": "#333333",
   "icons": [
     {
       "src": "icon192.png",
