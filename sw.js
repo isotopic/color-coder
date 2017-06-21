@@ -7,8 +7,7 @@ var urlsToCache = [
 	'css/font.css',
 	'js/color-coder.js',
 	'sound/yes.mp3',
-	'sound/no.mp3',
-	'phonegap.js'
+	'sound/no.mp3'
 ];
 
 this.addEventListener('install', function(event) {
