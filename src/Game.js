@@ -32,11 +32,14 @@ var Game = (function() {
 		Graphics.generateCircle('circle_svg', 2, 0.3);
 		accept_click = true;
 		circle_svg.onclick = function(event){
+			
 			if( typeof(event.target.isCorrect) !== 'undefined' && accept_click){
 				accept_click = false;
 				if(event.target.isCorrect){
+					Navigator.vibrate([1]);
 					nextLevel();
 				}else{
+					Navigator.vibrate([300]);
 					gameOver();
 				}
 			}
